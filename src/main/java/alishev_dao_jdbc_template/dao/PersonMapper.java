@@ -19,6 +19,7 @@ public class PersonMapper implements RowMapper<Person> {
                 resultSet.getInt("id"),
                 resultSet.getString("name"),
                 resultSet.getInt("age"),
-                resultSet.getString("email"));
+                resultSet.getString("email"),
+                resultSet.getString("address"));
     }
 }

@@ -44,13 +44,17 @@ public class PersonDAO {
     }
 
     public void save(Person person) { //в апдейте значения указываем просто через запятую после стринги
-        jdbcTemplate.update("INSERT INTO Person VALUES (nextval('person_id_seq'), ?, ?, ?)",
-                person.getName(), person.getAge(), person.getEmail());
+        jdbcTemplate.update("INSERT INTO Person VALUES (nextval('person_id_seq'), ?, ?, ?, ?)",
+                person.getName(), person.getAge(), person.getEmail(), person.getAddress());
     }
 
     public void update(int id, Person updatePerson) {
-        jdbcTemplate.update("UPDATE Person SET name=?, age=?, email=? WHERE id=?",
-                updatePerson.getName(), updatePerson.getAge(), updatePerson.getEmail(), id);
+        jdbcTemplate.update("UPDATE Person SET name=?, age=?, email=?, address=? WHERE id=?",
+                updatePerson.getName(),
+                updatePerson.getAge(),
+                updatePerson.getEmail(),
+                updatePerson.getAddress(),
+                id);
     }
 
     public void delete(int id) {
