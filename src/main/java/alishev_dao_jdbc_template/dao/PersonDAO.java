@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 
 import java.sql.*;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class PersonDAO {
@@ -35,6 +36,11 @@ public class PersonDAO {
        return jdbcTemplate.query("SELECT * FROM Person WHERE id=?",
                new Object[]{id}, new PersonMapper()).stream() //а тут поставим самописный
                .findAny().orElse(null);
+    }
+
+    public Optional<Person> show(String email){ //перегруженный метод, нужен для работы PersonValidator проверяющего дубликаты email
+        return jdbcTemplate.query("SELECT * FROM Person WHERE email=?", new Object[]{email},
+                new PersonMapper()).stream().findAny(); //findAny как раз возвращает Optional, так что даже немного сократили код
     }
 
     public void save(Person person) { //в апдейте значения указываем просто через запятую после стринги
