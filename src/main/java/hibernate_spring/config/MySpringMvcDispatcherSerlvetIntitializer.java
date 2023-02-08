@@ -1,4 +1,4 @@
-package alishev_dao_jdbc_template.config;
+package hibernate_spring.config;
 
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
